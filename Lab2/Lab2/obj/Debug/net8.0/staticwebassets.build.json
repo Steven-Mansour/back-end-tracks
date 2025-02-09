@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "9UNTJAw4MmonVEiEgBIjxu0juGShQRKrLF/n/wY/F0Q=",
+  "Source": "Lab2",
+  "BasePath": "_content/Lab2",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Lab2\\wwwroot",
+      "Source": "Lab2",
+      "ContentRoot": "C:\\Users\\User\\RiderProjects\\Lab2\\Lab2\\wwwroot\\",
+      "BasePath": "_content/Lab2",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
