@@ -1,18 +1,22 @@
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using DemoLab7.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lab4_CodeFirst.Controllers;
+namespace DemoLab7.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class StudentController: ControllerBase
 {
     private readonly UniversityDbContext _context;
-    public StudentController(UniversityDbContext context)
+    private readonly BlobContainerClient _blobContainerClient;
+    public StudentController(UniversityDbContext context, BlobContainerClient blobContainerClient)
     {
         _context = context;
+        _blobContainerClient = blobContainerClient;
     }
     [Authorize(Roles = "teacher")]
     [HttpGet("all")]
@@ -78,6 +82,48 @@ public class StudentController: ControllerBase
         student.Classes.Remove(classObj);
         await _context.SaveChangesAsync();
         return Ok("Student removed from class successfully!");
+    }
+    [Authorize(Roles = "student")]
+    [HttpPost("profile/{userId}")]
+    public async Task<IActionResult> UploadProfilePicture(int userId, IFormFile file)
+    {
+        if (file == null || file.Length == 0)
+            return BadRequest("File is empty.");
+
+        var blobName = $"student{userId}/profile";
+        var blobClient = _blobContainerClient.GetBlobClient(blobName);
+
+        using (var stream = file.OpenReadStream())
+        {
+            await blobClient.UploadAsync(stream, new BlobHttpHeaders { ContentType = file.ContentType });
+        }
+
+        var url = blobClient.Uri.ToString();
+        var student = await _context.Students.FindAsync(userId);
+        student.ProfilePictureUrl = url;
+        if (student == null)
+            return NotFound("Student not found.");
+        await _context.SaveChangesAsync();
+        return Ok(new { profilePictureUrl = url });
+    }
+    [Authorize(Roles = "student")]
+    [HttpGet("profile/{userId}")]
+    public async Task<IActionResult> DownloadProfilePicture(int userId)
+    {
+        var student = await _context.Students.FindAsync(userId);
+        if (student == null)
+            return NotFound("Student not found.");
+
+        var blobName = $"student{userId}/profile";
+        var blobClient = _blobContainerClient.GetBlobClient(blobName);
+
+        if (!await blobClient.ExistsAsync())
+            return NotFound("Profile picture not found.");
+        var downloadInfo = await blobClient.DownloadAsync();
+        string fileName = $"student{userId}_profile.jpg"; 
+
+        return File(downloadInfo.Value.Content, downloadInfo.Value.ContentType, fileName);
+        
     }
     
 }

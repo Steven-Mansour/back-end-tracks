@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using DemoLab7.Auth;
 using DemoLab7.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -24,11 +25,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddAuthorization();
 
+var connectionString = builder.Configuration["AzureStorage:ConnectionString"];
+var containerName = builder.Configuration["AzureStorage:ContainerName"]; 
+builder.Services.AddSingleton(new BlobServiceClient(connectionString));
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<BlobServiceClient>().GetBlobContainerClient(containerName));
+
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-
-    // Define the OAuth2.0 scheme that's in use (Authorization Code Flow)
     c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.OAuth2,
@@ -43,7 +49,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    // Apply the OAuth2 scheme globally to all operations
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -58,7 +63,6 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

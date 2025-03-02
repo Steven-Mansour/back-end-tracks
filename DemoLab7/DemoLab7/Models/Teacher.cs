@@ -14,6 +14,7 @@ public partial class Teacher
     public string LastName { get; set; } = null!;
 
     public string Email { get; set; } = null!;
+    public string ProfilePictureUrl { get; set; }
     [JsonIgnore]
     public virtual List<Class> Classes { get; set; } = new List<Class>();
 }

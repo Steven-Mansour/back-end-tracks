@@ -142,3 +142,9 @@ C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\zh-Hans\Microsoft
 C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\DemoLab7.staticwebassets.runtime.json
+C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\Azure.Core.dll
+C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\System.IO.Hashing.dll
+C:\Users\User\RiderProjects\DemoLab7\DemoLab7\bin\Debug\net8.0\System.Memory.Data.dll

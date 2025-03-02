@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\User\\RiderProjects\\DemoLab7\\DemoLab7\\wwwroot\\assets\\Campus_map.jpeg",
+      "PackagePath": "staticwebassets\\assets\\Campus_map.jpeg"
+    },
+    {
       "Id": "C:\\Users\\User\\RiderProjects\\DemoLab7\\DemoLab7\\wwwroot\\assets\\Unilogo.jpg",
       "PackagePath": "staticwebassets\\assets\\Unilogo.jpg"
     },
