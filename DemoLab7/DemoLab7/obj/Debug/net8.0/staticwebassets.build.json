@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "czZfTQsRN+0bQfmLL8CXwq8h5J1fSEVYSuenTNVlXeE=",
+  "Hash": "zgVUfGo4/SrbeJe3wzhslJjp7BY+ZIJhgqEOweCEqfQ=",
   "Source": "DemoLab7",
   "BasePath": "_content/DemoLab7",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "DemoLab7\\wwwroot",
+      "Source": "DemoLab7",
+      "ContentRoot": "C:\\Users\\User\\RiderProjects\\DemoLab7\\DemoLab7\\wwwroot\\",
+      "BasePath": "_content/DemoLab7",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\User\\RiderProjects\\DemoLab7\\DemoLab7\\wwwroot\\assets\\Unilogo.jpg",
+      "SourceId": "DemoLab7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\RiderProjects\\DemoLab7\\DemoLab7\\wwwroot\\",
+      "BasePath": "_content/DemoLab7",
+      "RelativePath": "assets/Unilogo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Unilogo.jpg"
+    }
+  ]
 }
